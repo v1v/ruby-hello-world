@@ -16,6 +16,8 @@ pipeline {
                 withCredentials([file(credentialsId: 'rubygems_file', variable: 'location')]) {
                   sh 'mkdir .gem && cp ${location} .gem/'
                 }
+                // https://issues.jenkins-ci.org/browse/JENKINS-33171
+                sh 'git checkout $BRANCH_NAME'
                 sh 'git config --global user.email "VictorMartinezRubio@gmail.com"'
                 sh 'git config --global user.name "Victor Martinez"'
                 sh "bundle install"
