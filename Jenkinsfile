@@ -23,6 +23,7 @@ pipeline {
                 sh 'git checkout $BRANCH_NAME'
                 sh 'git config --global user.email "VictorMartinezRubio@gmail.com"'
                 sh 'git config --global user.name "Victor Martinez"'
+                sh 'git fetch --all'
                 sh "bundle install"
                 sh "rake release"
               }
