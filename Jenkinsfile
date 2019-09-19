@@ -16,7 +16,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'rubygems_file', variable: 'location')]) {
                   sh 'mkdir .gem && cp ${location} .gem/ && chmod 0600 .gem/*'
                 }
-                sh './prepare-git-context.sh'
+                sh '.ci/prepare-git-context.sh'
                 sh 'bundle install'
                 sh 'rake release'
               }
