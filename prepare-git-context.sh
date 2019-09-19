@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -exo pipefail
 
 # Enable git+ssh. Env variables are created on the fly with the gitCheckout
 git config remote.origin.url "git@github.com:${ORG_NAME}/${REPO_NAME}.git"
