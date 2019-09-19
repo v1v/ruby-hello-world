@@ -18,12 +18,11 @@ pipeline {
                 }
                 // https://issues.jenkins-ci.org/browse/JENKINS-33171
                 sh 'git remote set-url origin git@github.com:v1v/ruby-hello-world.git'
-                sh 'git config -l'
-                sh 'git remote -v'
-                sh 'git checkout $BRANCH_NAME'
+                sh "git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'"
                 sh 'git config --global user.email "VictorMartinezRubio@gmail.com"'
                 sh 'git config --global user.name "Victor Martinez"'
                 sh 'git fetch --all'
+                sh 'git checkout $BRANCH_NAME'
                 sh "bundle install"
                 sh "rake release"
               }
