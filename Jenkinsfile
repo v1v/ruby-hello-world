@@ -17,6 +17,7 @@ pipeline {
                   sh 'mkdir .gem && cp ${location} .gem/ && chmod 0600 .gem/*'
                 }
                 sh '.ci/prepare-git-context.sh'
+                sh 'gem install rake'
                 sh 'rake release'
               }
             }
