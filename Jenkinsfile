@@ -16,15 +16,9 @@ pipeline {
                 withCredentials([file(credentialsId: 'rubygems_file', variable: 'location')]) {
                   sh 'mkdir .gem && cp ${location} .gem/ && chmod 0600 .gem/*'
                 }
-                // https://issues.jenkins-ci.org/browse/JENKINS-33171
-                sh 'git config remote.origin.url git@github.com:v1v/ruby-hello-world.git'
-                sh "git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'"
-                sh 'git config --global user.email "VictorMartinezRubio@gmail.com"'
-                sh 'git config --global user.name "Victor Martinez"'
-                sh 'git fetch --all'
-                sh 'git checkout $BRANCH_NAME'
-                sh "bundle install"
-                sh "rake release"
+                sh 'prepare-git-context.sh'
+                sh 'bundle install'
+                sh 'rake release'
               }
             }
           }
