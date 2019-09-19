@@ -17,7 +17,7 @@ pipeline {
                   sh 'mkdir .gem && cp ${location} .gem/ && chmod 0600 .gem/*'
                 }
                 // https://issues.jenkins-ci.org/browse/JENKINS-33171
-                sh 'git remote set-url origin git@github.com:v1v/ruby-hello-world.git'
+                sh 'git config remote.origin.url git@github.com:v1v/ruby-hello-world.git'
                 sh "git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'"
                 sh 'git config --global user.email "VictorMartinezRubio@gmail.com"'
                 sh 'git config --global user.name "Victor Martinez"'
